@@ -15,9 +15,7 @@ var router = (function (module) {
     $.ajax({
       url: module.host + "/products",
       type: 'GET'
-    }).done(function(data){
-      console.log(data);
-    }).fail();
+    }).done(menu.renderMenu).fail();
   },
 });
 

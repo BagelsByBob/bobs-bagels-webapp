@@ -4,6 +4,8 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.2.0",
     "modernizr": "~2.8.2",
-    "backbone": "~1.1.2"
+    "backbone": "~1.1.2",
+    "handlebars": "~3.0.0",
+    "accounting": "~0.3.2"
   }
 }
