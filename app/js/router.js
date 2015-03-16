@@ -52,10 +52,11 @@ var router = (function (module) {
     },
     myProfile: function(){
       $('#content').empty();
-      $.ajax({
-        url: module.host + "/users/1",
-        type: 'GET'
-      }).done().fail();
+      // $.ajax({
+      //   url: module.host + "/users/1",
+      //   type: 'GET'
+      // }).done().fail();
+      profile.init();
     },
     about: function(){
       $('#content').empty().load('partials/about.html');;
