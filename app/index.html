@@ -1,50 +1,88 @@
 <!doctype html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>bobs bagels app</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/mocha/mocha.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
 
-  </head>
-  <body>
-    <!--[if lt IE 10]>
+<head>
+	<meta charset="utf-8">
+	<title>bobs bagels app</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/mocha/mocha.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+  <!-- Google Font -->
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-		  <li><a href="#/registration">Sign Up</a></li>
-		  <li><a href="#/login">Login</a></li>
-		  <li><a href="#/delivery-options">Checkout</a></li>
-        </ul>
-        <h3 class="text-muted">bobs bagels app</h3>
+<div id="big-border">
+	<div class="header">
+
+    <div class="row">
+      <div id="logo-font-box">
+        <h1>
+          Bob's<br>Bagels
+        </h1>
+        <div id="logo-mini-box">
+          <h5>since 1951</h5>
+        </div>
+
       </div>
-	  
-    <div class="container">
-					  <div id="cart"></div>
+
+      <div id="soc_nav_container">
+        <nav id="navsocial">
+          <a href="#" class="rss">RSS</a>
+          <a href="#" class="facebook">Facebook</a>
+          <a href="#" class="twitter">Twitter</a>
+          <a href="#" class="gmail">Gmail</a>
+        </nav>
+      </div>
+    </div> <!-- row -->
+
+    <div id="navbar" class="floatclear">
+      <!-- <ul class="nav nav-pills pull-right"> -->
+  		<ul class="nav nav-pills pull-right">
+  			<li class="nav_item"><a href="#">Home</a>
+  			</li>
+  			<li class="nav_item"><a href="#">About</a>
+  			</li>
+  			<li class="nav_item"><a href="#">Contact</a>
+  			</li>
+  			<li class="nav_item"><a href="#/registration">Sign Up</a>
+  			</li>
+  			<li class="nav_item"><a href="#/login">Login</a>
+  			</li>
+  			<li class="nav_item"><a href="#/delivery-options">Checkout</a>
+  			</li>
+  			<div id="cart"></div>
+  		</ul>
 
 
-      <div id='content'></div>
+    </div>
+
+  </div>
 
 
-      <!-- <div class="jumbotron">
+
+	<div class="container">
+		<div id='content'></div>
+
+
+		<!-- <div class="jumbotron">
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
         <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
@@ -69,7 +107,7 @@
       </div> -->
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from Team Turing</p>
       </div>
 
     </div>
@@ -104,15 +142,17 @@
     <script src="js/router.js" type="text/javascript"></script>
     <script src="js/payment.js" type="text/javascript"></script>
     <script src="js/cart.js" type="text/javascript"></script>
-    <script src="js/delivery.js" type="text/javascript"></script>
-	<script src="js/registration.js" type="text/javascript"></script>
+<!--    <script src="js/delivery.js" type="text/javascript"></script>-->
+    <script src="js/order.js" type="text/javascript"></script>
+    <script src="js/registration.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
+    <script src="js/nav.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
     {{#each products}}
       <div id="item-{{id}}">
         <div class="menu-item">
           <h2 id="{{id}}name">{{name}}</h2>
-          <span id="{{id}}price">${{price}}</span>
+          <span id='{{id}}price'>${{price}}</span>
         </div>
         <p>{{description}}</p>
         <form id="{{id}}">
@@ -122,6 +162,16 @@
               <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
             </label>
           </div>
+          <h4>Bagel</h4>
+          <div class="form-row">
+            <label>
+                <input type="radio" name="bagel" id="{{bagel.id}}" value="{{bagel.id}}" checked>{{bagel.bagel_type}}
+                {{#each otherBagels}}
+                  <input type="radio" name="bagel" id="{{id}}" value="{{id}}">{{bagel_type}}
+                {{/each}}
+            </label>
+
+          </div>
 
           <div class="form-row">
             <label>
@@ -129,27 +179,64 @@
               <textarea name="comments" id="{{id}}comments"></textarea>
             </label>
           </div>
-          {{#each ingredients}}
-            <p>{{name}}</p>
-          {{/each}}
-          <button type="submit" >Add to Cart</button>
+          <h4>Extras</h4>
+          <div id="{{id}}checks">
+          <div class="form-row">
+            {{#each extras}}
+               <label>
+                  <span>{{name}}</span>
+                  <input name="ingredients" type="checkbox" value="{{id}}">
+              </label>
+            {{/each}}
+          </div>
+          <h4>Removies</h4>
+          <div class="form-row">
+            {{#each ingredients}}
+              <label>
+                <span>{{name}}</span>
+                <input class="remove" name="ingredients" type="checkbox" value="{{id}}" checked>
+              </label>
+            {{/each}}
+          </div>
+          </div>
+
+          <button class='cart-submit' type="submit" >Add to Cart</button>
+
         </form>
       </div>
-
-
     {{/each}}
     </script>
+    <script type="text/x-handlebars-template" id='drink-render'>
+    {{#each drinks}}
+      <div id="item-{{id}}">
+        <div class="menu-item">
+          <h4 id="{{id}}name">{{name}}</h4>
+          <span>${{price}}</span>
+        </div>
+        <form id="{{id}}">
+          <div class="form-row">
+            <label>
+              <span>Quantity</span>
+              <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
+            </label>
+          </div>
+          <button class='cart-submit' type="submit" >Add to Cart</button>
+        </form>
+      </div>
+    {{/each}}
+    </script>
+
     <script type="text/x-handlebars-template" id='cart-render'>
     {{#each orderItem}}
       <div id="cart-{{id}}">
         <p>{{name}}</p>
         <p>x{{quantity}}</p>
-        <button value="{{id}}" id="remove-{{id}}">Remove from Cart</button>
+        <button value="{{id}}" class='.remove-cart' id="remove-{{id}}">Remove from Cart</button>
       </div>
     {{/each}}
     </script>
 
-  <!-- HANDLEBARS TEMPLATE EDIT USER PROFILE -->
+  <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
   <script id="user_profile_template" type="text/x-handlebars-template">
     {{#user}}
       <div id=user-{{this.id}}>
@@ -176,7 +263,9 @@
           Address 2: <input type=text id=user-address-2-field value="{{address_2}}" /> <br>
           Zipcode: <input type=text id=user-zipcode-field value="{{address_zipcode}}" /> <p>
 
-          <input type="submit" value="Save Profile"/>
+          <button id='edit-profile-submit' type="submit">Save Profile</button>
+          <button id='edit-profile-cancel' type="submit">Cancel</button>
+
         </form>
       </div>
     {{/user}}
@@ -196,5 +285,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <!-- endbuild -->
+  </div> <!-- big-border -->
 </body>
+
 </html>

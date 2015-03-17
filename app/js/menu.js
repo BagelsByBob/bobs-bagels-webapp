@@ -112,6 +112,38 @@ module.ingredients = [{
 }
 ];
 
+module.bagels = [{
+  "id": 1,
+  "bagel_type": "plain",
+  "price": "0.0"
+},
+{
+  "id": 2,
+  "bagel_type": "onion",
+  "price": "0.5"
+},
+{
+  "id": 3,
+  "bagel_type": "sesame seed",
+  "price": "0.5"
+},
+{
+  "id": 4,
+  "bagel_type": "whole wheat",
+  "price": "0.5"
+},
+{
+  "id": 5,
+  "bagel_type": "poppyseed",
+  "price": "0.5"
+},
+{
+  "id": 6,
+  "bagel_type": "cinnamon raison",
+  "price": "0.5"
+}
+];
+
   var renderExtras = function(item){
     var ingredients = [];
 
@@ -119,7 +151,7 @@ module.ingredients = [{
       ingredients.push(ingredient.id);
     });
 
-    item.ingredients = $.grep(menu.ingredients, function(n){
+    item.extras = $.grep(menu.ingredients, function(n){
       if (_.contains(ingredients, n.id) === false ) {
         return n.id
       };
@@ -127,20 +159,55 @@ module.ingredients = [{
 
   };
 
-  module.renderMenu = function(data){
+   var renderBagels = function(item){
+      if (item.id === 8) {
+          item.bagel = menu.bagels[3];
+      } else if (item.id === 9 ) {
+        item.bagel = menu.bagels[1];
+      } else if (item.id === 10 ) {
+        item.bagel = menu.bagels[2];
+      } else if (item.id === 12 ) {
+        item.bagel = menu.bagels[4];
+      } else {
+        item.bagel = menu.bagels[0];
+      };
 
-    data.forEach(renderExtras);
+      item.otherBagels = $.grep(menu.bagels, function(bagel){
+      return bagel.id != item.bagel.id;
+      });
+    };
 
-    var data = $.grep(data, function(n){
-     return n.product_type != "c";
-    });
+    module.init = function(data){
+      var bagelMenu = $.grep(data, function(n){
+        return ((n.product_type === "a") || (n.product_type === "b"));
+      });
+      var drinks = $.grep(data, function(n){
+        return n.product_type === "d";
+      });
 
-    var template = Handlebars.compile($('#menu-info').html());
+      renderBagelMenu(bagelMenu);
+      renderDrinks(drinks);
 
-    $('#content').html(template({
-      products: data
-    }));
+    }
+
+    var renderBagelMenu = function(data){
+
+      data.forEach(renderExtras);
+      data.forEach(renderBagels);
+
+      var template = Handlebars.compile($('#menu-info').html());
+      $('#content').html(template({
+        products: data
+      }));
   };
+
+    var renderDrinks = function(data){
+
+      var template = Handlebars.compile($('#drink-render').html());
+      $('#content').append(template({
+        drinks: data
+      }));
+    };
 
   module.renderCaterMenu = function(data){
     data = $.grep(data, function(n){

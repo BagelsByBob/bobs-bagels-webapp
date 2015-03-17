@@ -38,6 +38,22 @@ describe('Router', function () {
 });
 });
 
+ describe('Profile', function () {
+     it("provides the 'profile' object", function () {
+       // Expect exists and is an object.
+       expect(profile).to.be.an("object");
+
+});
+});
+
+describe('Registration', function () {
+     it("provides the 'registration' object", function () {
+       // Expect exists and is an object.
+       expect(registration).to.be.an("object");
+
+});
+});
+
 
 
 

@@ -1,47 +1,57 @@
 'use strict';
 
+//var hasCustomerId = new Backbone.Model({
+//		status: null
+//	});
+
+//hasCustomerId.url = 'localhost:3000/user/has_customer_id';
+
 var router = (function (module) {
 
   module.host = "http://localhost:3000";
-
   var Router = Backbone.Router.extend({
     routes: {
       '':'home',
       'home': 'home',
       'payments': 'payments',
+	  'user-payments': 'userPayments',
       'delivery-options': 'deliveryOptions',
-	  'registration': 'registration',
-	  'login': 'login',
+	    'registration': 'registration',
+	    'login': 'login',
       'catering': 'catering',
       'my-profile': 'myProfile',
-      'about': 'about'
+      'about': 'about',
     },
     home: function(){
       $('#content').empty();
       $.ajax({
         url: module.host + "/products",
         type: 'GET'
-      }).done(menu.renderMenu).fail();
+      }).done(menu.init).fail();
       cart.init();
     },
     payments: function(){
-      $('#content').empty().load('partials/payment-form.html');
-      payment.init();
+	  $('#content').empty().load('partials/payment-form.html');
+	  payment.init();
+	  order.init();
     },
+	userPayments: function(){
+		$('#content').empty().load('partials/user-payment.html');
+		payment.init();
+		order.init();
+	},
     deliveryOptions: function(){
       $('#content').empty().load('partials/order-time-form.html');
-      delivery.init();
+      order.init();
     },
-<<<<<<< HEAD
-	registration: function(){
-	  $('#content').empty().load('partials/registration-form.html');
+	  registration: function(){
+	    $('#content').empty().load('partials/registration-form.html');
       registration.init();
-	 },
-	 login: function(){
-		$('#content').empty().load('partials/login-form.html');
-      registration.init();
-  }
-=======
+	   },
+	  login: function(){
+		  $('#content').empty().load('partials/login-form.html');
+        registration.init();
+  		},
     catering: function(){
       $('#content').empty();
       $.ajax({
@@ -52,16 +62,15 @@ var router = (function (module) {
     },
     myProfile: function(){
       $('#content').empty();
-      // $.ajax({
-      //   url: module.host + "/users/1",
-      //   type: 'GET'
-      // }).done().fail();
+//       $.ajax({
+//         url: module.host + "/users/1",
+//         type: 'GET'
+//       }).done().fail();
       profile.init();
     },
     about: function(){
       $('#content').empty().load('partials/about.html');;
     }
->>>>>>> 8a8193f22d63990f9dd72a89cbf0402448724f29
   });
 
   module.router = new Router();
@@ -77,4 +86,5 @@ var router = (function (module) {
 
 $(document).ready(function(){
   router.backbone();
+  
 });

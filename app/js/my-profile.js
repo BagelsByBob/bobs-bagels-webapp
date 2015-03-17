@@ -4,14 +4,25 @@ var profile = (function (module){
       console.log('inside handleForm, user id is: ' + user_id);
 
 
-      $('form#edit-profile-form').on('submit',function(event, user_id){
-        console.log('inside Save Profile button, user id is: ' + user_id)
-
+      $('#edit-profile-submit').on('click',function(event){
         event.preventDefault();
-        console.log('SAVE PROFILE button clicked');
-// debugger;
+        console.log('Clicked Save Profile button, user id is: ' + user_id)
+        //save the form changes in getAjax()
+        profile.getAjax(user_id);
+      }); // end #edit-profile-submit
+
+      $('#edit-profile-cancel').on('click',function(event){
+        event.preventDefault();
+        console.log('Clicked Cancel button, user id is: ' + user_id)
+        $('#edit-profile-form').hide();
+      }); // end #edit-profile-cancel
+
+  }; // end module.handleForm
+
+  module.getAjax = function(user_id){
+    // debugger;
         $.ajax({
-          url: 'http://localhost:3000/users/1',
+          url: 'http://localhost:3000/users/' + localStorage['authToken'],
           type: 'PATCH',
           dataType: 'JSON',
           data:
@@ -25,19 +36,21 @@ var profile = (function (module){
               address_zipcode: $('#user-zipcode-field').val()
           }
         }
-
         }).done(function(data){
           console.log(data);
+
+          //reset the user data w/ the newly changed data
+          profile.init();
+
         }).fail(function(jqXHR, textStatus, errorThrown){
           console.log(jqXHR, textStatus, errorThrown);
-        });
-      }); // end form#edit-profile-form
-  }; // end module.showForm
+        }); //end $.ajax()
+  }; //end module.getAjax
 
 
  module.init = function(){
     $.ajax({
-    url: 'http://localhost:3000/users/1',
+    url: 'http://localhost:3000/users/' + localStorage['authToken'],
     type: 'GET',
     dataType: 'JSON'
     })

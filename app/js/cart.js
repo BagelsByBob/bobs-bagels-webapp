@@ -11,6 +11,10 @@ var cart = (function (module) {
     orderItem['comments'] = $('#' + menuItem +'comments').val();
 	orderItem['price'] = $('#' + menuItem + 'price').text();
     orderItem['id'] = count;
+    orderItem['ingredients'] = $("form#" + menuItem + " input[type=checkbox]:checked").map(function() {
+      return this.value;
+    }).get();
+    orderItem['bagel'] = $("form#" + menuItem + ' input:radio[name=bagel]:checked').val();
     localStorage['count'] = JSON.stringify(count);
     return orderItem;
   };

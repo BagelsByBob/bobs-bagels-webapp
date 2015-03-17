@@ -1,28 +1,40 @@
-<form action="" method="POST" id="payment-form">
-  <span class="payment-errors"></span>
+<form action="" id="payment-form">
+	<span class="payment-errors"></span>
 
-  <div class="form-row">
-    <label>
-      <span>Card Number</span>
-      <input type="text" size="20" id="number"/>
-    </label>
-  </div>
+	<div class="form-row">
+		<label>
+			<span>Card Number</span>
+			<input type="text" size="20" id="number" />
+		</label>
+	</div>
 
-  <div class="form-row">
-    <label>
-      <span>CVC</span>
-      <input type="text" size="4" id="cvc"/>
-    </label>
-  </div>
+	<div class="form-row">
+		<label>
+			<span>CVC</span>
+			<input type="text" size="4" id="cvc" />
+		</label>
+	</div>
 
-  <div class="form-row">
-    <label>
-      <span>Expiration (MM/YYYY)</span>
-      <input type="text" size="2" id="exp-month"/>
-    </label>
-    <span> / </span>
-    <input type="text" size="4" id="exp-year"/>
-  </div>
+	<div class="form-row">
+		<label>
+			<span>Expiration (MM/YYYY)</span>
+			<input type="text" size="2" id="exp-month" />
+		</label>
+		<span> / </span>
+		<input type="text" size="4" id="exp-year" />
+	</div>
 
-  <button type="submit">Submit Payment</button>
+	<div class="form-row">
+		<label>
+			<input name="store-payment-info" type="checkbox" autocomplete="off" checked><b>Store your payment data?</b>
+		</label>
+	</div>
+
+	<button type="submit" id="payment-submit">Submit Payment</button>
 </form>
+
+<script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
+  // ...
+</script>

@@ -3,6 +3,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+.floatclear {
+  clear: both;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -12,7 +16,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 20px;
 }
 
@@ -20,20 +24,33 @@ body {
 .header,
 .marketing,
 .footer {
+  /* border: 1px solid red; */
   padding-left: 15px;
   padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  /* border: 1px solid red; */
+  border-bottom: 5px double #C7142A;
+  /* background: #678C55; //green */
+  background-image: url("../images/header_bg_med.png");
 
   /* Make the masthead heading the same height as the navigation */
-  h3 {
+  #logo-font-box {
+    /* border: 1px solid red; */
+    float: left;
+    padding: 0px 0px 0px 50px;
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
+  }
+
+  #logo-mini-box {
+    /* border: 1px solid red; */
+    padding: 0px 0px 0px 70px;
+    margin: 0;
   }
 }
 
@@ -42,6 +59,94 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    /* color: #262D40; */
+    font-size: 50px;
+    font-weight: boldest;
+    color: #2D365A;
+}
+
+#navbar {
+  /*border: 1px solid red;*/
+  height: 15px;
+
+  padding-right: 20px;
+}
+.nav-pills>li {
+  border-radius: 20px;
+}
+
+/* nav pill color - inactive */
+.nav-pills>li>a {
+  background-color: #C7142A;
+  color: #000;
+}
+
+/* nav pill color - hover */
+.nav-pills>li>a:hover {
+  background-color: #2D365A;
+  color: #FFF;
+
+}
+
+.nav_item {
+  font-size: 14px;
+}
+
+/* Social Nav */
+#soc_nav_container {
+  /* border: 1px solid red; */
+  padding: 30px 20px 0px 0px;
+  /* float: right; */
+}
+
+
+#navsocial a{
+  /* border: 1px solid red; */
+
+  display: block;
+  float: right;
+  height: 48px;
+  width: 48px;
+  margin-right: 10px;
+
+  text-indent: -9999px;
+  overflow: hidden;
+  background-image: url("../images/socialNav.png");
+  background-repeat: no-repeat;
+}
+
+#navsocial a.gmail {
+  background-position: 0 -48px;
+}
+
+#navsocial a.twitter {
+  background-position: -48px -48px;
+}
+
+#navsocial a.facebook {
+  background-position: -97px -48px;
+}
+#navsocial a.rss {
+  background-position: -146px -48px;
+}
+
+#navsocial a.gmail:hover {
+  background-position: 0 0  ;
+}
+
+#navsocial a.twitter:hover {
+  background-position: -48px 0;
+}
+
+#navsocial a.facebook:hover {
+  background-position: -97px 0;
+}
+#navsocial a.rss:hover {
+  background-position: -146px 0;
 }
 
 .container-narrow > hr {
@@ -78,15 +183,80 @@ body {
   .footer {
     padding-left: 0;
     padding-right: 0;
+    clear: float;
   }
 
   /* Space out the masthead */
   .header {
+    /* border: 1px solid red; */
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
+  /*  .jumbotron {
     border-bottom: 0;
+  } */
+}
+
+/* Responsive: Portrait tablets and below */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 730px;
   }
+
+  h1 {
+      font-size: 40px;
+  }
+
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+    clear: float;
+  }
+
+  /* Space out the masthead */
+  .header {
+    /* border: 1px solid red; */
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /*  .jumbotron {
+    border-bottom: 0;
+  } */
+}
+
+/* Responsive: Portrait iPhone4 and up */
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 456px;
+  }
+
+  h1 {
+      font-size: 30px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+    clear: float;
+  }
+
+  /* Space out the masthead */
+  .header {
+    /* border: 1px solid red; */
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /* .jumbotron {
+    border-bottom: 0;
+  } */
 }
