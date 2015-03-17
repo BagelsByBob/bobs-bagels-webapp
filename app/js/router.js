@@ -3,12 +3,12 @@
 var router = (function (module) {
 
   module.host = "http://localhost:3000";
-
   var Router = Backbone.Router.extend({
     routes: {
       '':'home',
       'home': 'home',
       'payments': 'payments',
+	  'user-payments': 'userPayments',
       'delivery-options': 'deliveryOptions',
 	    'registration': 'registration',
 	    'login': 'login',
@@ -28,6 +28,11 @@ var router = (function (module) {
       $('#content').empty().load('partials/payment-form.html');
       order.init();
     },
+	userPayments: function(){
+		$('#content').empty().load('partials/user-payment.html');
+		payment.init();
+		order.init();
+	},
     deliveryOptions: function(){
       $('#content').empty().load('partials/order-time-form.html');
       order.init();
@@ -74,4 +79,5 @@ var router = (function (module) {
 
 $(document).ready(function(){
   router.backbone();
+  
 });

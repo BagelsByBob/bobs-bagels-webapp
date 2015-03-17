@@ -1,10 +1,5 @@
 var payment = (function (module) {
 
-//	Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
-
-	//	module.customer_pay = function () {
-	//		Stripe.
-
 	module.card_pay = function () {
 		Stripe.card.createToken({
 			number: $('#number').val(),
@@ -46,7 +41,7 @@ var payment = (function (module) {
 					//			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
 			}
 		}
-	}).done(function (data) {
+	}).done(function (data) {	
 		console.log(data);
 		order.submitOrder();
 	}).fail(function (jqXHR, textStatus, errorThrown) {

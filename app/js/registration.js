@@ -1,6 +1,7 @@
 var registration = (function (module) {
 
 	var authToken;
+	var customerId;
 
 	module.submitRegistration = function () {
 		$.ajax({
@@ -17,21 +18,21 @@ var registration = (function (module) {
 	};
 
 	module.loginSuccess = function (userData) {
+		debugger;
 		localStorage.setItem('authToken', userData.token);
-		console.log('logged in!');
+		localStorage.setItem('customerId', userData.customer_id);
+		console.log(userData);
 		window.location.href = '/';
 	};
 
 	module.submitLogin = function (event) {
 		var $form;
 		$form = $(this);
-		debugger;
 		$.ajax({
 				url: 'http://localhost:3000/users/sign_in',
 				type: 'POST',
 				data: {email: $('#email').val(), password: $('#password').val()},
 			}).done(registration.loginSuccess).fail(registration.acceptFailure);
-
 		return false;
 	};
 
@@ -52,6 +53,7 @@ var registration = (function (module) {
 	module.init = function () {
 		console.log('yo in the registration');
 		authToken = localStorage.getItem('authToken');
+		customerId = localStorage.getItem('customerId');
 
 		registration.setupAjaxRequests();
 

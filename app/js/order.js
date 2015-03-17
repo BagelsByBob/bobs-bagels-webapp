@@ -13,7 +13,11 @@ var order = (function (module) {
       localStorage["streetOne"] = $('#street-1').val();
       localStorage["streetTwo"] = $('#street-2').val();
       localStorage["phoneNumber"] = $('#phone-number').val();
-      location.href = '/#/payments';
+	  if(localStorage['customerId'] != undefined) {
+		location.href = '/#/user-payments';
+	  } else {
+      	location.href = '/#/payments';
+	  }
   };
 
   var loginValidation = function(){
@@ -24,7 +28,7 @@ var order = (function (module) {
       addressValidation();
     };
   };
-
+	
   var addressValidation = function(){
     payment.card_pay();
   };
@@ -74,11 +78,6 @@ var order = (function (module) {
       loginValidation();
     });
   };
-
-
-
-
-
 
   return module;
 
