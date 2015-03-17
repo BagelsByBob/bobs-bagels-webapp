@@ -236,6 +236,15 @@
     {{/each}}
     </script>
 
+    <script type="text/x-handlebars-template" id='order_summary_render-render'>
+    {{#order}}
+      {{#each order_items}}
+        <p>product.name</p>
+      {{/each}}
+      <p>${{total}}</p>
+    {{/order}}
+    </script>
+
   <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
   <script id="user_profile_template" type="text/x-handlebars-template">
     {{#user}}

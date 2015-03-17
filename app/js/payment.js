@@ -1,10 +1,5 @@
 var payment = (function (module) {
 
-//	Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
-
-	//	module.customer_pay = function () {
-	//		Stripe.
-
 	module.card_pay = function () {
 		Stripe.card.createToken({
 			number: $('#number').val(),
@@ -48,15 +43,9 @@ var payment = (function (module) {
 		}
 	}).done(function (data) {	
 		console.log(data);
+		order.submitOrder();
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown);
-	});
-};
-
-module.init = function () {
-	$('#content').on('click', '#payment-submit', function (event) {
-		event.preventDefault();
-		module.card_pay();
 	});
 };
 

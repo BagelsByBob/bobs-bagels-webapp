@@ -1,11 +1,5 @@
 'use strict';
 
-//var hasCustomerId = new Backbone.Model({
-//		status: null
-//	});
-
-//hasCustomerId.url = 'localhost:3000/user/has_customer_id';
-
 var router = (function (module) {
 
   module.host = "http://localhost:3000";
@@ -31,9 +25,8 @@ var router = (function (module) {
       cart.init();
     },
     payments: function(){
-	  $('#content').empty().load('partials/payment-form.html');
-	  payment.init();
-	  order.init();
+      $('#content').empty().load('partials/payment-form.html');
+      order.init();
     },
 	userPayments: function(){
 		$('#content').empty().load('partials/user-payment.html');
